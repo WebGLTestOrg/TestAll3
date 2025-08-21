@@ -1,78 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>Three.js FPS Example</title>
-  <meta charset="utf-8">
-  <meta name="generator" content="Three.js Editor">
-  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-  <style>
-    body {
-      font-family: sans-serif;
-      font-size: 11px;
-      background-color: #000;
-      margin: 0px;
-    }
-    canvas {
-      display: block;
-    }
-  </style>
-</head>
-<body ontouchstart="">
-  <script type="importmap">
-    {
-      "imports": {
-        "three": "./js/three.module.js",
-        "stats": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/libs/stats.module.js"
-      }
-    }
-  </script>
-  <script type="module">
-
-    import * as THREE from 'three';
-    import { APP } from './js/app.js';
-    import Stats from 'stats';
-
-    window.THREE = THREE; // Used by APP Scripts.
-
-    var loader = new THREE.FileLoader();
-    loader.load( 'app.json', function ( text ) {
-
-      var player = new APP.Player();
-      player.load( JSON.parse( text ) );
-      player.setSize( window.innerWidth, window.innerHeight );
-      player.play();
-
-      document.body.appendChild( player.dom );
-
-      window.addEventListener( 'resize', function () {
-        player.setSize( window.innerWidth, window.innerHeight );
-      } );
-
-      // === FPS COUNTER ===
-      const stats = new Stats();
-      stats.showPanel( 0 ); // 0: fps, 1: ms, 2: memory
-      document.body.appendChild( stats.dom );
-      stats.dom.style.position = 'absolute';
-      stats.dom.style.left = '0px';
-      stats.dom.style.top = '0px';
-
-      // Перехватываем анимационный цикл плеера
-      const animate = () => {
-        requestAnimationFrame( animate );
-        stats.begin();
-        stats.end();
-      };
-      animate();
-
-    } );
-
-    let button = document.createElement( 'a' );
-    button.href = 'https://threejs.org/editor/#file=' + location.href.split( '/' ).slice( 0, - 1 ).join( '/' ) + '/app.json';
-    button.style.cssText = 'position: absolute; bottom: 20px; right: 20px; padding: 10px 16px; color: #fff; border: 1px solid #fff; border-radius: 20px; text-decoration: none;';
-    button.target = '_blank';
-    button.textContent = 'EDIT';
-    document.body.appendChild( button );
-
-  </script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <title>Three.js Spawner Example</title>
+    <style>
+      body { margin: 0; overflow: hidden; background: #111318; }
+      canvas { display: block; }
+    </style>
+  </head>
+  <body>
+    <script type="module" src="./app.js"></script>
+  </body>
 </html>
